@@ -1,19 +1,25 @@
-import type { Config } from "tailwindcss";
+import { fontFamily } from 'tailwindcss/defaultTheme'
+import type { Config } from 'tailwindcss'
+import colors from 'tailwindcss/colors'
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: colors.pink,
+        gray: colors.gray,
+      },
+      fontFamily: {
+        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },
     },
   },
-  plugins: [],
-};
-export default config;
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+}
+export default config
