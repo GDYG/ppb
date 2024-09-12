@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
-import siteMetadata from "@/data/siteMetadata";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Space_Grotesk } from 'next/font/google'
+import siteMetadata from '@/data/siteMetadata'
+import { ThemeProvider } from '@/components/ThemeProvider'
+import './globals.css'
 
 const space_grotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-grotesk",
-});
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -20,17 +20,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
-    url: "./",
+    url: './',
     siteName: siteMetadata.title,
     images: [siteMetadata.socialBanner],
     // locale: "en_US",
-    locale: "zh_CN",
-    type: "website",
+    locale: 'zh_CN',
+    type: 'website',
   },
   alternates: {
-    canonical: "./",
+    canonical: './',
     types: {
-      "application/rss+xml": `${siteMetadata.siteUrl}/feed.xml`,
+      'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
   },
   robots: {
@@ -39,22 +39,22 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   twitter: {
     title: siteMetadata.title,
-    card: "summary_large_image",
+    card: 'summary_large_image',
     images: [siteMetadata.socialBanner],
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html
@@ -62,33 +62,15 @@ export default function RootLayout({
       className={`${space_grotesk.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/static/images/favicon4.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/static/images/favicon.ico"
-      />
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon4.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon.ico" />
       <link rel="mask-icon" href="/static/images/favicon.ico" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta
-        name="theme-color"
-        media="(prefers-color-scheme: light)"
-        content="#fff"
-      />
-      <meta
-        name="theme-color"
-        media="(prefers-color-scheme: dark)"
-        content="#000"
-      />
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
