@@ -16,8 +16,6 @@ const ThemeSwitch = () => {
     return null
   }
 
-  console.log(33333, theme, resolvedTheme)
-
   return (
     <select value={theme} onChange={(e) => setTheme(e.target.value)}>
       <option value="system">System</option>

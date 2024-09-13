@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { Space_Grotesk } from 'next/font/google'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import './globals.css'
+import { SearchConfig, SearchProvider } from 'pliny/search'
+import 'css/tailwind.css'
+import 'pliny/search/algolia.css'
+import 'remark-github-blockquote-alert/alert.css'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -69,7 +72,11 @@ export default function RootLayout({
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+            {children}
+          </SearchProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
